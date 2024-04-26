@@ -1,0 +1,56 @@
+//Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+
+ 
+
+Example 1:
+
+Input: x = 123
+Output: 321
+Example 2:
+
+Input: x = -123
+Output: -321
+Example 3:
+
+Input: x = 120
+Output: 21
+
+
+class Solution {
+public:
+    int reverse(int x) {
+        if (x == 0)
+            return x;
+
+        string str = to_string(x);  // converting into string
+        int len = str.length() - 1;
+        char lastChar = str[len];
+
+        if (lastChar == '0') {
+            while (str[len] == '0')
+                len--;
+        }
+
+        string reversed;
+        for (int i = 0; i <= len; i++) {
+            reversed = str[i] + reversed;
+        }
+
+        if (reversed[reversed.length() - 1] == '-') {
+            reversed.pop_back();  // Remove the negative sign
+            long long reversedLong = stoll(reversed); // converting into long long
+            if (reversedLong < INT_MIN || reversedLong >INT_MAX) // handling edge cases
+                return 0;
+            return static_cast<int>(-reversedLong);
+        } else {
+            long long reversedLong = stoll(reversed);
+            if (reversedLong > INT_MAX || reversedLong >INT_MAX)
+                return 0;
+            return static_cast<int>(reversedLong);
+        }
+
+        return 0;  
+    }
+};

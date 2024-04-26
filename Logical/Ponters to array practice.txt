@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout<<"INTEGER ARRAY\n"<<endl;
+   int a[]={1,2,3,4,5};
+   cout<<a<<endl; // this will print address of first memory block
+   int *p= &a[0];   // this pointer will point to  the address of the first location of array a  (int *p= arr is also same)
+   cout<<*p<<endl;       // this will print first value of array
+   cout<<*(p+1)<<endl;    //this will print seocnd value of array
+   p=p+2;// this will point to address of third location in array
+   cout<<*p<<endl; // printing third value
+   cout<<*p+1<<endl;   // this will addd value 1 to first value of array
+   cout<<sizeof(*p)<<endl; // size of datatype stored at that loacation (4 bytes)
+   cout<<sizeof(p)<<endl; // size of memory block for that location (8 bytes)
+   cout<<endl;
+   cout<<"CHAR ARRAY\n";
+   char ch[6]="abcde";
+   cout<<ch<<endl;     // this will not print address of first memory block instead it will print entire content of array
+   char *p1=&ch[0];
+   cout<<p1<<endl;     //this will not print address of first memory block instead it will print entire content of array
+   cout<<*p1<<endl; // this will print a
+}

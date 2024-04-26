@@ -1,0 +1,30 @@
+Hint* For a^b
+if(b is even)
+a^b  =  (a^b/2*a^b/2)
+if(b is odd)
+a^b  =  a*(a^b/2*a^b/2)
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int cal_pow(int n,int x)
+{
+    if(x==0)
+    return 1;
+    if(x==1)
+    return n;
+    int ans=cal_pow(n,x/2);
+    if(x%2==0)
+    return ans*ans;
+    else
+    return n*ans*ans;
+    
+}
+int main()
+{
+    int n,x;
+    cout<<"ENTER NUMBER AND ITS POWER\n";
+    cin>>n;
+    cin>>x;
+    cout<<cal_pow(n,x);
+}

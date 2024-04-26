@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i=1;
+    while(i<=4)
+    {
+        int spc=4-i;
+        int j=1;
+        int k=i-1;;
+        while(spc>0)
+        {
+            cout<<" ";
+            spc--;
+        }
+        while(j<=i)
+        {
+        cout<<j;
+        j++;
+        }
+        while(k!=0)
+        {
+            cout<<k;
+            k--;
+        }
+        i++;
+        cout<<endl;
+    }
+}

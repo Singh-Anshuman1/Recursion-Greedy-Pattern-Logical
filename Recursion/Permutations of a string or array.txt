@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void permutations(vector<vector<int>>&an,vector<int>& nums,int index)
+{
+    if(index>=nums.size())
+    {
+        an.push_back(nums);
+        return;
+    }
+    for(int j=index;j<nums.size();j++)
+    {
+        swap(nums[index],nums[j]);
+        permutations(an,nums,index+1);
+        swap(nums[index],nums[j]);// for backtracking
+    }
+
+}
+    vector<vector<int>> permute(vector<int>& nums) {
+       vector<vector<int>>ans;
+        permutations(ans,nums,0);
+        return ans;
+    }
+};

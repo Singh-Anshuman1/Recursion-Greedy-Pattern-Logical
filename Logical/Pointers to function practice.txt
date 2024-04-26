@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+void update(int *p)
+{
+    *p=7;
+}
+int main()
+{
+    int x=6;
+    cout<<"VALUE BEFORE UPDATION "<<x<<endl;
+    int *p=&x;
+    update(p);
+    
+    cout<<"VALUE AFTER UPDATION "<<x;
+    
+}

@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        int n=s.length();
+        int ans=0;
+        
+        map<char,int>set;
+    set['I']=1;
+    set['V']=5;
+    set['X']=10;
+    set['L']=50;
+    set['C']=100;
+    set['D']=500;
+    set['M']=1000;
+    int i=0;
+    int x,y;
+    
+    while(i<n)
+    {
+        if(i==n-1)
+        {
+        ans+=set[s[i]];
+        i++;
+        continue;
+        }
+       
+        
+        x=set[s[i]];
+        y=set[s[i+1]];
+        i++;
+        if(x>=y)
+        ans+=x;
+        else
+        ans+=-x;
+        }
+    
+    return ans;
+        
+    }
+};

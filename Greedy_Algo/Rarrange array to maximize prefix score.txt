@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxScore(vector<int>& nums) {
+        vector<long long>prefix(nums.size());
+        sort(nums.begin(),nums.end(),greater<int>());
+        prefix[0]=nums[0];
+        int n=nums.size();
+        int max=0;
+        if(prefix[0]>0)
+        max++;
+        for(int i=1;i<n;i++)
+        {
+            prefix[i]=prefix[i-1]+nums[i];
+            if(prefix[i]>0)
+            max++;
+        }
+            
+        return max;
+    }
+};

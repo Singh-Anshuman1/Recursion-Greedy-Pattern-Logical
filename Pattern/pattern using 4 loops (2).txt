@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int i=0;
+while(i<5)
+{
+    int k=1;
+    int j=5-i;
+    int j1=5-i;
+    int soan=i*2;
+    while(j!=0)
+    {
+    cout<<k++;
+    j--;
+    }
+    while(soan!=0)
+    {
+        cout<<"*";
+        soan--;
+    }
+    while(j1!=0)
+    {
+        cout<<j1;
+        j1--;
+    }
+    i++;
+    cout<<endl;
+}
+}

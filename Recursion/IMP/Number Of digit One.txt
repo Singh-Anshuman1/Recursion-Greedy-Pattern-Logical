@@ -1,0 +1,63 @@
+Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
+
+ 
+
+Example 1:
+
+Input: n = 13
+Output: 6
+Example 2:
+
+Input: n = 0
+Output: 0
+
+
+
+Hint*
+f(9)=1
+f(99)   = 10*f(9)      [unit 1's contributions]  +10       [contribution of 1 other than unit place]
+f(999)  = 10*f(99)     [unit 1's contributions]  +100      [contribution of 1 other than unit place]
+f(9999) = 10*f(999)    [unit 1's contributions]  +1000     [contribution of 1 other than unit place]
+
+f(26)   =  2*f(9) + 10 + f(6)
+f(3467) =  3*f(999) + 1000 + f(467)
+
+
+
+class Solution {
+public:
+    int countDigitOne(int n)
+{
+    int ans=0;
+    if(n<=0)
+    return 0;
+    if(n<=9)
+    return 1;
+    unordered_map<int,int>mp;
+    mp[9]=1;
+    for(int i=9;i<(INT_MAX-9)/10;i=10*i+9) // storing values of f(9),f(99),f(999)...
+    mp[i*10+9]=10*mp[i]+(i+1);
+    int temp=n;
+    int divisor=1;
+    while(temp/10)
+    {
+        temp/=10;
+        divisor*=10;
+    }
+    int first_digit=n/divisor;// for taking out the first digit
+    int rem=n%divisor;
+    
+    ans+=first_digit*mp[divisor-1];
+    if(first_digit>1)
+    ans+=divisor;
+    if(first_digit==1)
+    ans+=rem+1;
+
+
+    ans+=countDigitOne(rem);
+    return ans;
+
+    
+    
+}
+};

@@ -1,0 +1,32 @@
+class Solution {
+public:
+int median_search(vector<int> &arr, int start, int end, int k) {
+    if (start <= end) {
+        int pivot = arr[start];
+        vector<int> vec1;
+        vector<int> vec2;
+        vector<int> vec3;
+
+        for (int i = start; i <= end; i++) {
+            if (arr[i] < pivot)
+                vec1.push_back(arr[i]);
+            else if (arr[i] == pivot)
+                vec2.push_back(arr[i]);
+            else
+                vec3.push_back(arr[i]);
+        }
+
+        if (vec1.size() >= k)
+            return median_search(vec1, 0, vec1.size() - 1, k);
+        else if (vec1.size() + vec2.size() >= k)
+            return vec2[0];
+        else
+            return median_search(vec3, 0, vec3.size() - 1, k - vec1.size() - vec2.size());
+    }
+    return -1; 
+}
+    int findKthLargest(vector<int>& nums, int k) {
+        
+   return median_search(nums,0,nums.size()-1,nums.size()-k+1);
+    }
+};
